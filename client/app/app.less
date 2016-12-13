@@ -8,11 +8,36 @@
  * App-wide Styles
  */
 
+ @font-face {
+     font-family: blue-sheep;
+     src: url('/assets/fonts/DK Blue Sheep.otf');
+ }
+
+ @font-face {
+     font-family: smile;
+     src: url('/assets/fonts/Mini Smile.ttf');
+ }
+
+ @font-face {
+     font-family: andale;
+     src: url('/assets/fonts/Andale Mono.ttf');
+ }
+
+ .smile {
+   font-family: smile;
+   font-size: 50pt;
+ }
+
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
+}
+
+html, body {
+  font-family: blue-sheep;
+  color: black;
 }
 
 /* inject:less */
