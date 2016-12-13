@@ -42,10 +42,18 @@ html, body {
 footer {
   z-index: 1000;
 }
+[ui-view=""] {
+  z-index: 1001;
+}
+navbar {
+  z-index: 1002;
+}
+
 
 /* inject:less */
 @import 'admin/admin';
 @import 'main/main';
 @import '../components/footer/footer';
 @import '../components/modal/modal';
+@import '../components/navbar/navbar';
 /* endinject */

@@ -1,0 +1,95 @@
+navbar {
+  position: fixed;
+  display: block;
+  width: 100%;
+  padding-top: 30px;
+  background-color: black;
+  color: white;
+  margin-bottom: 100px;
+
+  .profile-picture {
+    display: inline-block;
+    vertical-align: top;
+    overflow: visible;
+    height: 75px;
+    margin-right: 15px;
+
+    img {
+      width: 150px;
+      height: 150px;
+      border: thick solid black;
+      border-radius: 75px;
+    }
+  }
+  .header {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  #menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    width: 70%;
+    text-align: right;
+
+    a {
+      display: inline-block;
+      background-color: white;
+      vertical-align: middle;
+      text-align: center;
+      font-size: 25pt;
+      color: black;
+      border-radius: 30px;
+      border: thin solid black;
+      width: 60px;
+      height: 60px;
+      margin: 5px;
+      padding: 8px;
+    }
+  }
+}
+navbar+div {
+  padding-top: 150px;
+}
+
+@media (max-width: 400px) {
+  navbar {
+    .header h1 {
+      display: none;
+    }
+    #menu {
+        width: 50%;
+        a {
+          width: 40px;
+          height: 40px;
+          font-size: 15pt;
+          padding: 5px;
+        }
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  navbar {
+    #menu {
+      top: auto;
+      right: 0;
+      bottom: -40px;
+      left: auto;
+      width: auto;
+
+      a {
+        font-size: 35pt;
+        border-radius: 40px;
+        border: thick solid black;
+        width: 80px;
+        height: 80px;
+        margin: 0px 10px;
+        padding: 5px;
+      }
+    }
+  }
+}
