@@ -4,7 +4,8 @@
 .constant("appConfig", {
 	"userRoles": [
 		"admin"
-	]
+	],
+	"apiURL": "http://localhost:9000/api/"
 })
 
 ;

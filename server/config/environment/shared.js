@@ -2,5 +2,7 @@
 
 exports = module.exports = {
   // List of user roles
-  userRoles: ['admin']
+  userRoles: ['admin'],
+  // API url
+  apiURL: 'http://localhost:9000/api/'
 };
