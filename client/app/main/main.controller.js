@@ -4,35 +4,30 @@
 
   class MainController {
 
-    constructor($http, $scope, socket) {
-      this.$http = $http;
-      this.socket = socket;
-      this.awesomeThings = [];
-
-      $scope.$on('$destroy', function() {
-        socket.unsyncUpdates('thing');
+    constructor() {
+      angular.extend(this, {
+        index: 0,
+        checkboxes: {}
       });
     }
 
     $onInit() {
-      this.$http.get('/api/things')
-        .then(response => {
-          this.awesomeThings = response.data;
-          this.socket.syncUpdates('thing', this.awesomeThings);
-        });
+      $('html').scrollTop(0);
     }
 
     addThing() {
-      if (this.newThing) {
-        this.$http.post('/api/things', {
-          name: this.newThing
-        });
-        this.newThing = '';
-      }
+      this.index++;
     }
 
-    deleteThing(thing) {
-      this.$http.delete('/api/things/' + thing._id);
+    getTotalPoints() {
+      let totalPoints = 0;
+      for (var category in this.checkboxes) {
+        console.log(category, this.checkboxes[category]);
+        if (this.checkboxes[category]) {
+          totalPoints++;
+        }
+      }
+      return totalPoints;
     }
   }
 

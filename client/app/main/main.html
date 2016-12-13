@@ -1,28 +1,188 @@
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+<div class="container" infinite-scroll="$ctrl.addThing()" infinite-scroll-distance="-0.1">
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 0">
+    <h1 class="text-center">
+      <p> <span class="smile"> Of </span> </p>
+      <p> <i> Woah woah waoh! </i> </p>
+      <p> Maraming salamat sa pagbisita sa aking blog kaibigan. </p>
+    </h1>
   </div>
-</header>
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in $ctrl.awesomeThings">
-        <li><a href="#" uib-tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="$ctrl.deleteThing(thing)">&times;</button></a></li>
-      </ul>
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 1">
+    <h1 class="text-center">
+      <p> <span class="smile"> Oe </span> </p>
+      <p> Bago ang lahat </p>
+      <p> Gusto kong ipakilala ang aking sarili. </p>
+    </h1>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 2">
+    <h1 class="text-center">
+      <p> <i> Lilinawin ko lang na hindi ako professional blogger. </i> </p>
+      <p> Ginawa ko lang itong page na ito para mai-share ang mga experiences ko sa buhay. </p>
+      <p> <span class="smile"> FNj </span> </p>
+    </h1>
+    <div class="text-center">
+      <label class="checkbox">
+        <input type="checkbox" value="true" name="personal" ng-model="$ctrl.checkboxes.personal"></input>
+        Markahan ang checkbox kung naniniwala ka
+      </label>
     </div>
   </div>
 
-  <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="$ctrl.newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="$ctrl.addThing()">Add New</button>
-      </span>
-    </p>
-  </form>
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 3">
+    <h1 class="text-center">
+      <p> Makikita mo ang mga kaganapan sa aking buhay <br/> sa aking personal blog. </p>
+      <p> <i class="fa fa-user"> </i> </p>
+    </h1>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 4">
+    <h1 class="text-center">
+      <p> <i> Mahilig rin akong gumala. </i> </p>
+      <p> <span class="smile"> ENp </span> </p>
+      <p> Pinapatunayan yan ng nunal ko sa talampakan. </p>
+    </h1>
+    <div class="text-center">
+      <label class="checkbox">
+        <input type="checkbox" value="true" name="travel" ng-model="$ctrl.checkboxes.travel"></input>
+        Markahan ang checkbox kung naniniwala ka
+      </label>
+    </div>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 5">
+    <h1 class="text-center">
+      <p> Gaya ng nakararami, pangarap kong malibot ang buong Pilipinas at buong mundo balang araw. </p>
+      <p> <span class="smile"> LQf </span> </p>
+    </h1>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 6">
+    <h1 class="text-center">
+      <p> Sundan ang aking journey na malibot ang buong mundo sa aking travel blog. </p>
+      <p> <i class="fa fa-plane"> </i> </p>
+    </h1>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 7">
+    <h1 class="text-center">
+      <p> Hindi man halata sa katawan ko, </p>
+      <p> Malakas akong kumain. </p>
+      <p> <span class="smile"> GNn </span> </p>
+      <p> Itanong mo pa sa mga kaibigan ko. </p>
+    </h1>
+    <div class="text-center">
+      <label class="checkbox">
+        <input type="checkbox" value="true" name="food" ng-model="$ctrl.checkboxes.food"></input>
+        Markahan ang checkbox kung naniniwala ka
+      </label>
+    </div>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 8">
+    <h1 class="text-center">
+      <p> Mejo maselan nga lang ako sa pagkain. </p>
+      <p>  <i> Lalo na kung mahal. </i> </p>
+      <p> <span class="smile"> Nm </span> </p>
+      <p>  <i> Hmmmm. </i> Alam mo yan! </p>
+    </h1>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 9">
+    <h1 class="text-center">
+      <p> Bisitahin ang aking food reviews sa aking food blog. </p>
+      <p> <i class="fa fa-spoon"> </i> </p>
+    </h1>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 10">
+    <h1 class="text-center">
+      <p> Paminsan-minsan, umaakyat rin ako ng bundok kasama ng mga kaibigan ko. </p>
+      <p> <span class="smile"> FHo </span> </p>
+      <p> Sumasali rin ako sa mga marathon at fun run. </p>
+    </h1>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 10">
+    <h1 class="text-center">
+      <p> Sinisikap ko rin na makatakbo isa, hanggang dalawang beses sa isang linggo. </p>
+      <p> Nagpapatunay na dyan ang mga kalyo ko sa paa. </p>
+      <p> <span class="smile"> GHq </span> </p>
+    </h1>
+    <div class="text-center">
+      <label class="checkbox">
+        <input type="checkbox" value="true" name="sports" ng-model="$ctrl.checkboxes.sports"></input>
+        Markahan ang checkbox kung naniniwala ka
+      </label>
+    </div>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 12">
+    <h1 class="text-center">
+      <p> Makiramay sa mga paghihirap ko sa aking sports blog. </p>
+      <p> <i class="fa fa-soccer-ball-o"> </i> </p>
+    </h1>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 13">
+    <h1 class="text-center">
+      <p> Kapag sinasapian ako ng creativity, </p>
+      <p> Nagsusulat rin ako ng mga maiikling kwento. </p>
+      <p> <span class="smile"> BNk </span> </p>
+    </h1>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 14">
+    <h1 class="text-center">
+      <p> Sa sobrang creative ng mga kwento ko, </p>
+      <p> hindi ka magsisising basahin ang mga ito. </p>
+      <p> <span class="smile"> CNn </span> </p>
+    </h1>
+    <div class="text-center">
+      <label class="checkbox">
+        <input type="checkbox" value="true" name="story" ng-model="$ctrl.checkboxes.story"></input>
+        Markahan ang checkbox kung naniniwala ka
+      </label>
+    </div>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 15">
+    <h1 class="text-center">
+      <p> Kung hindi ka naniniwala, buksan at magbasa sa aking story blog. </p>
+      <p> <i class="fa fa-book"> </i> </p>
+    </h1>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 16">
+    <h1 class="text-center" ng-switch="$ctrl.getTotalPoints()">
+      <p> Salamat sa pagbigay sa akin ng {{ $ctrl.getTotalPoints() }} na marka kaibigan. </p>
+      <p ng-switch-when="0"> Ano bang kailangan kong gawin para maniwala ka sa akin? <span class="smile"> GNHo </span> </p>
+      <p ng-switch-when="1"> Grabe, sobrang hirap mo naman paniwalain. <span class="smile"> GNHl </span> </p>
+      <p ng-switch-when="2"> At least pinaniwalaan mo ako kahit papaano. <span class="smile"> FNo </span> </p>
+      <p ng-switch-when="3"> Wow average hahaha. <span class="smile"> GNo </span> </p>
+      <p ng-switch-when="4"> Nakuha ko na agad ang loob mo at napaniwala kita. hahaha. <span class="smile"> ENm </span> </p>
+      <p ng-switch-when="5"> Wala talagang makakatanggi sa matatamis kong salita. <span class="smile"> ELNh </span> </p>
+    </h1>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 17">
+    <h1 class="text-center">
+      <p> Pero, what ever mark you gave me </p>
+      <p> Okay lang yun, basta nakarating ka dito sa dulo </p>
+    </h1>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 18">
+    <h1 class="text-center">
+      <p> Hindi nasayang ang effort ko </p>
+    </h1>
+  </div>
+
+  <div class="pane animated zoomIn" ng-show="$ctrl.index >= 19">
+    <h1 class="text-center">
+      <p> Thanks for the mark. </p>
+      <p> Ako nga pala si MARK Benedict. </p>
+      <p> Tong-teng for short. </p>
+    </h1>
+  </div>
 </div>
