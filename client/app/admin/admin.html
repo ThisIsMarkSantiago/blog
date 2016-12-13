@@ -47,4 +47,34 @@
       </div>
   	</div>
   </form>
+
+  <div id="posts">
+    <h4> Your Posts: </h4>
+    <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="post in admin.posts">
+      <div class="well">
+        <div class="background" style="background-image: url('{{post.previewImage}}')" ng-if="post.previewImage"/>
+        <div class="action-buttons">
+          <button type="button" class="btn btn-mini btn-default rubberBand infinite"
+            ng-class="{ 'animated': animateEdit }"
+            ng-click="admin.edit(post)"
+            ng-mouseenter="animateEdit = true"
+            ng-mouseleave="animateEdit = false">
+            <i class="fa fa-pencil"></i>
+          </button>
+          <button type="button" class="btn btn-mini btn-default rubberBand infinite"
+            ng-class="{ 'animated': animateDelete }"
+            ng-click="admin.delete(post)"
+            ng-mouseenter="animateDelete = true"
+            ng-mouseleave="animateDelete = false">
+            <i class="fa fa-trash"></i>
+          </button>
+        </div>
+        <div class="contents">
+          <h3 ng-bind="post.title"></h3>
+          <hr />
+          <p ng-bind="post.previewText"> </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

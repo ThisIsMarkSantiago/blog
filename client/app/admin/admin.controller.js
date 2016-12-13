@@ -3,12 +3,22 @@
 (function() {
 
   class AdminController {
-    constructor(Auth) {
 
+    constructor(API, Auth) {
       angular.extend( this, {
+        API,
+        loading: {},
+        errors: {},
         user: Auth.getCurrentUser(),
         post: {}
       });
+
+      this.loading.posts = true;
+      this.errors.posts = undefined;
+      this.API.get('posts')
+        .then(posts => this.posts = posts)
+        .catch(error => this.errors.posts = error)
+        .finally(() => this.loading.posts = false);
     }
 
     preview() {
@@ -30,6 +40,14 @@
       if (form.$valid) {
         // TODO
       }
+    }
+
+    edit(post) {
+      // TODO
+    }
+
+    delete(post) {
+      // TODO
     }
   }
 
