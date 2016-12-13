@@ -32,23 +32,6 @@ export function index(req, res) {
 }
 
 /**
- * Creates a new user
- */
-export function create(req, res, next) {
-  var newUser = new User(req.body);
-  newUser.provider = 'local';
-  newUser.role = 'user';
-  newUser.save()
-    .then(function(user) {
-      var token = jwt.sign({ _id: user._id }, config.secrets.session, {
-        expiresIn: 60 * 60 * 5
-      });
-      res.json({ token });
-    })
-    .catch(validationError(res));
-}
-
-/**
  * Get a single user
  */
 export function show(req, res, next) {
