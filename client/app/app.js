@@ -10,7 +10,8 @@ angular.module('myblogApp', [
     'btford.socket-io',
     'ui.router',
     'ui.bootstrap',
-    'validation.match'
+    'validation.match',
+    'infinite-scroll'
   ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
