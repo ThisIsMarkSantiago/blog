@@ -38,7 +38,12 @@
 
     submit(form) {
       if (form.$valid) {
-        // TODO
+        this.loading.post = true;
+        this.errors.post = undefined;
+        this.API.post('posts', this.post)
+          .then(() => this.post = {})
+          .catch(error => this.errors.post = error)
+          .finally(() => this.loading.post = false);
       }
     }
 

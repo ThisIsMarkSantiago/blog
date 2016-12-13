@@ -1,13 +1,16 @@
 <div class="container">
   <h1> Welcome back <span ng-bind="admin.user.name"> </span>! </h1>
 
-  <button type="button" class="btn btn-default bounce infinite"
-    ng-mouseleave="bounce = true"
-    ng-mouseenter="bounce = false"
-    ng-class="{ 'animated': bounce }"
-    ng-init="bounce = true"
-    ng-click="compose = true"
-    ng-show="!compose"> New Post </button>
+  <div class="text-right">
+    <button type="button" class="btn btn-default bounce infinite"
+      ng-mouseleave="bounce = true"
+      ng-mouseenter="bounce = false"
+      ng-class="{ 'animated': bounce }"
+      ng-init="bounce = true"
+      ng-click="compose = true"
+      ng-show="!compose"> New Post </button>
+  </div>
+
   <form name="postForm" ng-submit="admin.submit(postForm)" novalidate>
   	<div uib-collapse="!compose" ng-init="compose = false">
       <uib-tabset active="active">
