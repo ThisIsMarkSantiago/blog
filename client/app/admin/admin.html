@@ -1,3 +1,50 @@
 <div class="container">
   <h1> Welcome back <span ng-bind="admin.user.name"> </span>! </h1>
+
+  <button type="button" class="btn btn-default bounce infinite"
+    ng-mouseleave="bounce = true"
+    ng-mouseenter="bounce = false"
+    ng-class="{ 'animated': bounce }"
+    ng-init="bounce = true"
+    ng-click="compose = true"
+    ng-show="!compose"> New Post </button>
+  <form name="postForm" ng-submit="admin.submit(postForm)" novalidate>
+  	<div uib-collapse="!compose" ng-init="compose = false">
+      <uib-tabset active="active">
+       <uib-tab heading="Metadata">
+         <div class="form-group" ng-class="{ 'has-error': postForm.title.$invalid && (postForm.title.$dirty || postForm.$submitted) }">
+           <input name="title" class="form-control" ng-model="admin.post.title" placeholder="Title" required>
+           <p class="help-block" ng-show="postForm.title.$invalid && (postForm.title.$dirty || postForm.$submitted)"> This field is required! </p>
+         </div>
+         <div class="form-group">
+           <input name="previewImage" class="form-control" ng-model="admin.post.previewImage" placeholder="Preview Picture" />
+         </div>
+         <div class="form-group" ng-class="{ 'has-error': postForm.previewText.$invalid && (postForm.previewText.$dirty || postForm.$submitted) }">
+           <textarea name="previewText" class="form-control" ng-model="admin.post.previewText" placeholder="Preview Text" required> </textarea>
+           <p class="help-block" ng-show="postForm.previewText.$invalid && (postForm.previewText.$dirty || postForm.$submitted)"> This field is required! </p>
+         </div>
+       </uib-tab>
+       <uib-tab heading="Markup">
+         <div class="form-group" ng-class="{ 'has-error': postForm.markup.$invalid && (postForm.markup.$dirty || postForm.$submitted) }">
+           <textarea name="markup" class="form-control code-box" ng-model="admin.post.markup" required> </textarea>
+           <p class="help-block" ng-show="postForm.markup.$invalid && (postForm.markup.$dirty || postForm.$submitted)"> This field is required! </p>
+         </div>
+       </uib-tab>
+       <uib-tab heading="Style">
+         <textarea name="style" class="form-control code-box" ng-model="admin.post.style"></textarea>
+       </uib-tab>
+       <uib-tab heading="Script">
+         <textarea name="script" class="form-control code-box" ng-model="admin.post.script"></textarea>
+       </uib-tab>
+       <uib-tab heading="Preview">
+         <div class="preview-box" ng-html="admin.preview()"></div>
+       </uib-tab>
+     </uib-tabset>
+      <hr />
+      <div class="text-right">
+        <button type="submit" class="btn"> Post </button>
+        <button type="button" class="btn" ng-click="compose = false"> Cancel </button>
+      </div>
+  	</div>
+  </form>
 </div>
