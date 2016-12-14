@@ -18,7 +18,13 @@ var PostSchema = new mongoose.Schema({
   },
   style: String,
   script: String,
-  active: Boolean
+  tags: [String],
+  active: {
+    type: Boolean,
+    default: true
+  }
+}, {
+  timestamps: true
 });
 
 export default mongoose.model('Post', PostSchema);
