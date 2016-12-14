@@ -10,6 +10,7 @@
 'use strict';
 
 import _ from 'lodash';
+import moment from 'moment';
 import Post from './post.model';
 
 function respondWithResult(res, statusCode) {
@@ -61,7 +62,16 @@ function handleError(res, statusCode) {
 
 // Gets a list of Posts
 export function index(req, res) {
-  return Post.find().exec()
+  req.query.start = moment(req.query.start).toISOString();
+  return Post.find({
+      createdAt: {
+        $lt: req.query.start
+      },
+      active: true
+    })
+    .sort('-createdAt')
+    .limit(3)
+    .select('-markup -style -script').exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
