@@ -19,7 +19,7 @@
           ng-mouseleave="info_hover = false"
           uib-tooltip="Personal Blog"
           tooltip-placement="bottom"
-          href="https://www.reddit.com/user/ThisIsMarkSantiago/submitted/?sort=top" target="_blank">
+          ui-sref="tags({ tag: '' })">
           <i class="fa fa-user"></i>
         </a>
         <a ng-class="{ ' swing animated': travel_hover }"
@@ -27,7 +27,7 @@
           ng-mouseleave="travel_hover = false"
           uib-tooltip="Travel Blog"
           tooltip-placement="bottom"
-          href="https://www.reddit.com/user/ThisIsMarkSantiago/submitted/?sort=top" target="_blank">
+          ui-sref="tags({ tag: 'travel' })">
           <i class="fa fa-plane"></i>
         </a>
         <a ng-class="{ ' swing animated': food_hover }"
@@ -35,7 +35,7 @@
           ng-mouseleave="food_hover = false"
           uib-tooltip="Food Blog"
           tooltip-placement="bottom"
-          href="https://www.reddit.com/user/ThisIsMarkSantiago/submitted/?sort=top" target="_blank">
+          ui-sref="tags({ tag: 'food' })">
           <i class="fa fa-spoon"></i>
         </a>
         <a ng-class="{ ' swing animated': fitness_hover }"
@@ -43,7 +43,7 @@
           ng-mouseleave="fitness_hover = false"
           uib-tooltip="Sports Blog"
           tooltip-placement="bottom"
-          href="https://www.reddit.com/user/ThisIsMarkSantiago/submitted/?sort=top" target="_blank">
+          ui-sref="tags({ tag: 'sports' })">
           <i class="fa fa-soccer-ball-o"></i>
         </a>
         <a ng-class="{ ' swing animated': story_hover }"
@@ -51,7 +51,7 @@
           ng-mouseleave="story_hover = false"
           uib-tooltip="Story Blog"
           tooltip-placement="bottom"
-          href="https://www.reddit.com/user/ThisIsMarkSantiago/submitted/?sort=top" target="_blank">
+          ui-sref="tags({ tag: 'story' })">
           <i class="fa fa-book"></i>
         </a>
         <a ng-class="{ ' swing animated': contact_hover }"
@@ -59,7 +59,7 @@
           ng-mouseleave="contact_hover = false"
           uib-tooltip="Contact"
           tooltip-placement="bottom"
-          href="https://www.reddit.com/user/ThisIsMarkSantiago/submitted/?sort=top" target="_blank">
+          ui-sref="tags({ tag: '' })">
           <i class="fa fa-phone"></i>
         </a>
       </div>

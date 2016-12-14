@@ -1,0 +1,27 @@
+<div class="container" id="tags-page">
+  <div id="posts" infinite-scroll="$ctrl.addThings()" infinite-scroll-distance="-0.1">
+    <div ng-show="$ctrl.loading.posts" class="loading animated rubberBand infinite"></div>
+    <div ng-hide="$ctrl.loading.posts">
+      <h4> <span ng-bind="($ctrl.$state.params.tag || 'All').split('_').join(' ')"></span> Posts: </h4>
+      <div class="col-xs-12 alert alert-danger" ng-show="$ctrl.errors.posts">
+        <p> An error occured loading posts. </p>
+        <a href="" ng-click="$ctrl.getPosts()"> Retry </a>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="post in $ctrl.posts">
+        <div class="well animated zoomIn">
+          <div class="background" style="background-image: url('{{post.previewImage}}')" ng-if="post.previewImage"/>
+          <div class="contents">
+            <h3 ng-bind="post.title"></h3>
+            <button class="btn btn-xs" type="button"
+              ng-repeat="tag in post.tags"
+              ui-sref="tags({ tag: tag })"
+              ng-bind="tag">
+            </button>
+            <hr />
+            <p ng-bind="post.previewText"> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

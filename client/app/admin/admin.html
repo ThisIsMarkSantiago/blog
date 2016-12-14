@@ -100,7 +100,10 @@
           </div>
           <div class="contents">
             <h3 ng-bind="post.title"></h3>
-            <button class="btn btn-xs" type="button" ng-repeat="tag in post.tags" ng-bind="tag">
+            <button class="btn btn-xs" type="button"
+              ng-repeat="tag in post.tags"
+              ui-sref="tags({ tag: tag })"
+              ng-bind="tag">
             </button>
             <hr />
             <p ng-bind="post.previewText"> </p>
