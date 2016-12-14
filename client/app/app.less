@@ -52,6 +52,7 @@ navbar {
 .well {
   background-color: white;
   border-color: black;
+  border-width: 5px;
 }
 
 button, button.btn, button.btn:hover, button.btn:focus,
@@ -77,8 +78,23 @@ hr {
   border-bottom-color: transparent;
 }
 
+.loading {
+  width: 100px;
+  height: 100px;
+  margin: 30px auto;
+  border: thick solid black;
+  border-radius: 50px;
+  text-align: center;
+  padding: 35px 0px;
+
+  &:before {
+    content: 'loading...';
+  }
+}
+
 /* inject:less */
 @import 'admin/admin';
+@import 'dashboard/dashboard';
 @import 'main/main';
 @import '../components/footer/footer';
 @import '../components/modal/modal';

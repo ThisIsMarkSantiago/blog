@@ -7,75 +7,104 @@
       ng-mouseenter="bounce = false"
       ng-class="{ 'animated': bounce }"
       ng-init="bounce = true"
-      ng-click="compose = true"
-      ng-show="!compose"> New Post </button>
+      ng-click="admin.create(); postForm.$setPristine();"
+      ng-show="!admin.compose"> New Post </button>
   </div>
 
   <form name="postForm" ng-submit="admin.submit(postForm)" novalidate>
-  	<div uib-collapse="!compose" ng-init="compose = false">
-      <uib-tabset active="active">
-       <uib-tab heading="Metadata">
-         <div class="form-group" ng-class="{ 'has-error': postForm.title.$invalid && (postForm.title.$dirty || postForm.$submitted) }">
-           <input name="title" class="form-control" ng-model="admin.post.title" placeholder="Title" required>
-           <p class="help-block" ng-show="postForm.title.$invalid && (postForm.title.$dirty || postForm.$submitted)"> This field is required! </p>
-         </div>
-         <div class="form-group">
-           <input name="previewImage" class="form-control" ng-model="admin.post.previewImage" placeholder="Preview Picture" />
-         </div>
-         <div class="form-group" ng-class="{ 'has-error': postForm.previewText.$invalid && (postForm.previewText.$dirty || postForm.$submitted) }">
-           <textarea name="previewText" class="form-control" ng-model="admin.post.previewText" placeholder="Preview Text" required> </textarea>
-           <p class="help-block" ng-show="postForm.previewText.$invalid && (postForm.previewText.$dirty || postForm.$submitted)"> This field is required! </p>
-         </div>
-       </uib-tab>
-       <uib-tab heading="Markup">
-         <div class="form-group" ng-class="{ 'has-error': postForm.markup.$invalid && (postForm.markup.$dirty || postForm.$submitted) }">
-           <textarea name="markup" class="form-control code-box" ng-model="admin.post.markup" required> </textarea>
-           <p class="help-block" ng-show="postForm.markup.$invalid && (postForm.markup.$dirty || postForm.$submitted)"> This field is required! </p>
-         </div>
-       </uib-tab>
-       <uib-tab heading="Style">
-         <textarea name="style" class="form-control code-box" ng-model="admin.post.style"></textarea>
-       </uib-tab>
-       <uib-tab heading="Script">
-         <textarea name="script" class="form-control code-box" ng-model="admin.post.script"></textarea>
-       </uib-tab>
-       <uib-tab heading="Preview">
-         <div class="preview-box" ng-html="admin.preview()"></div>
-       </uib-tab>
-     </uib-tabset>
-      <hr />
-      <div class="text-right">
-        <button type="submit" class="btn"> Post </button>
-        <button type="button" class="btn" ng-click="compose = false"> Cancel </button>
+  	<div uib-collapse="!admin.compose">
+      <div ng-show="admin.loading.submit || admin.loading.post" class="loading animated rubberBand infinite"></div>
+      <div ng-hide="admin.loading.submit || admin.loading.post">
+        <div class="col-xs-12 alert alert-danger" ng-show="admin.errors.submit || admin.errors.post">
+          <p ng-bind="admin.errors.submit"> </p>
+          <p ng-bind="admin.errors.post"> </p>
+        </div>
+        <uib-tabset active="active">
+          <uib-tab heading="Metadata">
+            <div class="form-group" ng-class="{ 'has-error': postForm.title.$invalid && (postForm.title.$dirty || postForm.$submitted) }">
+              <input name="title" class="form-control" ng-model="admin.post.title" placeholder="Title" required>
+              <p class="help-block" ng-show="postForm.title.$invalid && (postForm.title.$dirty || postForm.$submitted)"> This field is required! </p>
+            </div>
+            <div class="form-group">
+              <input name="previewImage" class="form-control" ng-model="admin.post.previewImage" placeholder="Preview Picture" />
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': postForm.previewText.$invalid && (postForm.previewText.$dirty || postForm.$submitted) }">
+              <textarea name="previewText" class="form-control" ng-model="admin.post.previewText" placeholder="Preview Text" required> </textarea>
+              <p class="help-block" ng-show="postForm.previewText.$invalid && (postForm.previewText.$dirty || postForm.$submitted)"> This field is required! </p>
+            </div>
+            <div class="form-group">
+              <div class="form-inline">
+                <input type="text" class="form-control" ng-model="tag" placeholder="Add tag here"/>
+                <button class="btn btn-default" type="button" ng-click="admin.addTag(tag); tag = undefined">
+                  <i class="glyphicon glyphicon-plus"> </i>
+                </button>
+              </div>
+              <br />
+              <button class="btn btn-xs" type="button" ng-repeat="tag in admin.post.tags"
+                ng-bind="tag" uib-tooltip="click to remove"
+                ng-click="admin.removeTag($index)">
+              </button>
+            </div>
+          </uib-tab>
+          <uib-tab heading="Markup">
+            <div class="form-group" ng-class="{ 'has-error': postForm.markup.$invalid && (postForm.markup.$dirty || postForm.$submitted) }">
+              <textarea name="markup" class="form-control code-box" ng-model="admin.post.markup" required> </textarea>
+              <p class="help-block" ng-show="postForm.markup.$invalid && (postForm.markup.$dirty || postForm.$submitted)"> This field is required! </p>
+            </div>
+          </uib-tab>
+          <uib-tab heading="Style">
+            <textarea name="style" class="form-control code-box" ng-model="admin.post.style"></textarea>
+          </uib-tab>
+          <uib-tab heading="Script">
+            <textarea name="script" class="form-control code-box" ng-model="admin.post.script"></textarea>
+          </uib-tab>
+          <uib-tab heading="Preview">
+            <div class="preview-box" ng-html="admin.preview()"></div>
+          </uib-tab>
+        </uib-tabset>
+        <hr />
+        <div class="text-right">
+          <button type="submit" class="btn"> Submit </button>
+          <button type="button" class="btn" ng-click="admin.compose = false"> Cancel </button>
+        </div>
       </div>
   	</div>
   </form>
 
-  <div id="posts">
-    <h4> Your Posts: </h4>
-    <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="post in admin.posts">
-      <div class="well">
-        <div class="background" style="background-image: url('{{post.previewImage}}')" ng-if="post.previewImage"/>
-        <div class="action-buttons">
-          <button type="button" class="btn btn-mini btn-default rubberBand infinite"
-            ng-class="{ 'animated': animateEdit }"
-            ng-click="admin.edit(post)"
-            ng-mouseenter="animateEdit = true"
-            ng-mouseleave="animateEdit = false">
-            <i class="fa fa-pencil"></i>
-          </button>
-          <button type="button" class="btn btn-mini btn-default rubberBand infinite"
-            ng-class="{ 'animated': animateDelete }"
-            ng-click="admin.delete(post)"
-            ng-mouseenter="animateDelete = true"
-            ng-mouseleave="animateDelete = false">
-            <i class="fa fa-trash"></i>
-          </button>
-        </div>
-        <div class="contents">
-          <h3 ng-bind="post.title"></h3>
-          <hr />
-          <p ng-bind="post.previewText"> </p>
+  <div id="posts" infinite-scroll="admin.addThings()" infinite-scroll-distance="-0.1">
+    <div ng-show="admin.loading.posts" class="loading animated rubberBand infinite"></div>
+    <div ng-hide="admin.loading.posts">
+      <h4> Your Posts: </h4>
+      <div class="col-xs-12 alert alert-danger" ng-show="admin.errors.posts">
+        <p> An error occured loading your posts. </p>
+        <a href="" ng-click="admin.getPosts()"> Retry </a>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="post in admin.posts">
+        <div class="well animated zoomIn">
+          <div class="background" style="background-image: url('{{post.previewImage}}')" ng-if="post.previewImage"/>
+          <div class="action-buttons">
+            <button type="button" class="btn btn-mini btn-default rubberBand infinite"
+              ng-class="{ 'animated': animateEdit }"
+              ng-click="admin.edit(post); postForm.$setPristine();"
+              ng-mouseenter="animateEdit = true"
+              ng-mouseleave="animateEdit = false">
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button type="button" class="btn btn-mini btn-default rubberBand infinite"
+              ng-class="{ 'animated': animateDelete }"
+              ng-click="admin.delete(post)"
+              ng-mouseenter="animateDelete = true"
+              ng-mouseleave="animateDelete = false">
+              <i class="fa fa-trash"></i>
+            </button>
+          </div>
+          <div class="contents">
+            <h3 ng-bind="post.title"></h3>
+            <button class="btn btn-xs" type="button" ng-repeat="tag in post.tags" ng-bind="tag">
+            </button>
+            <hr />
+            <p ng-bind="post.previewText"> </p>
+          </div>
         </div>
       </div>
     </div>
