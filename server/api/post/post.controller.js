@@ -62,13 +62,17 @@ function handleError(res, statusCode) {
 
 // Gets a list of Posts
 export function index(req, res) {
-  req.query.start = moment(req.query.start).toISOString();
-  return Post.find({
-      createdAt: {
-        $lt: req.query.start
-      },
-      active: true
-    })
+  var query = {
+    createdAt: {
+      $lt: moment(req.query.start).toISOString()
+    },
+    active: true
+  };
+
+  if (req.query.tag) {
+    query.tags = req.query.tag;
+  }
+  return Post.find(query)
     .sort('-createdAt')
     .limit(3)
     .select('-markup -style -script').exec()
