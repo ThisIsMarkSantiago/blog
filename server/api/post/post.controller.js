@@ -74,7 +74,7 @@ export function index(req, res) {
   }
   return Post.find(query)
     .sort('-createdAt')
-    .limit(3)
+    .limit(6)
     .select('-markup -style -script').exec()
     .then(respondWithResult(res))
     .catch(handleError(res));

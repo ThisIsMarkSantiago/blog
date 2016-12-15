@@ -15,6 +15,7 @@
             <button class="btn btn-xs" type="button"
               ng-repeat="tag in post.tags"
               ui-sref="tags({ tag: tag })"
+              ng-click="$event.stopPropagation()"
               ng-bind="tag">
             </button>
             <hr />

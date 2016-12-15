@@ -85,14 +85,14 @@
           <div class="action-buttons">
             <button type="button" class="btn btn-mini btn-default rubberBand infinite"
               ng-class="{ 'animated': animateEdit }"
-              ng-click="admin.edit(post); postForm.$setPristine();"
+              ng-click="$event.stopPropagation(); admin.edit(post); postForm.$setPristine();"
               ng-mouseenter="animateEdit = true"
               ng-mouseleave="animateEdit = false">
               <i class="fa fa-pencil"></i>
             </button>
             <button type="button" class="btn btn-mini btn-default rubberBand infinite"
               ng-class="{ 'animated': animateDelete }"
-              ng-click="admin.delete(post)"
+              ng-click="$event.stopPropagation(); admin.delete(post)"
               ng-mouseenter="animateDelete = true"
               ng-mouseleave="animateDelete = false">
               <i class="fa fa-trash"></i>
