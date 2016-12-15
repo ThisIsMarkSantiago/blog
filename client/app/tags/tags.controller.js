@@ -14,7 +14,6 @@ class TagsComponent {
 
   $onInit() {
     this.getPosts();
-    console.log(this.$state.params);
   }
 
   getPosts() {

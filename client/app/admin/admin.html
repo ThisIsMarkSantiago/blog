@@ -80,7 +80,7 @@
         <a href="" ng-click="admin.getPosts()"> Retry </a>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="post in admin.posts">
-        <div class="well animated zoomIn">
+        <div class="well animated zoomIn" ui-sref="post({id: post._id})">
           <div class="background" style="background-image: url('{{post.previewImage}}')" ng-if="post.previewImage"/>
           <div class="action-buttons">
             <button type="button" class="btn btn-mini btn-default rubberBand infinite"

@@ -8,7 +8,7 @@
         <a href="" ng-click="$ctrl.getPosts()"> Retry </a>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="post in $ctrl.posts">
-        <div class="well animated zoomIn">
+        <div class="well animated zoomIn" ui-sref="post({id: post._id})">
           <div class="background" style="background-image: url('{{post.previewImage}}')" ng-if="post.previewImage"/>
           <div class="contents">
             <h3 ng-bind="post.title"></h3>
