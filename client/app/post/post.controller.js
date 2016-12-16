@@ -12,6 +12,9 @@ class PostComponent {
   }
 
   $onInit() {
+    if (FB) {
+      FB.XFBML.parse();
+    }
     if (this.$state.params.id) {
       this.getPost();
     } else {
