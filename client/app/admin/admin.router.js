@@ -7,6 +7,12 @@ angular.module('myblogApp.admin')
       templateUrl: 'app/admin/admin.html',
       controller: 'AdminController',
       controllerAs: 'admin',
-      authenticate: 'admin'
+      authenticate: 'admin',
+      data: {
+        meta: {
+          'title': 'Admin posts',
+          'description': 'Admin posts page'
+        }
+      }
     });
   });

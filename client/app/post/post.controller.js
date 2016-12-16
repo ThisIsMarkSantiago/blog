@@ -3,9 +3,9 @@
 (function(){
 
 class PostComponent {
-  constructor($state, API) {
+  constructor($state, API, ngMeta) {
     angular.extend( this, {
-      $state, API,
+      $state, API, ngMeta,
       loading: {},
       errors: {}
     });
@@ -28,6 +28,7 @@ class PostComponent {
     this.API.get(`posts/${this.$state.params.id}`)
       .then(response => {
         this.post = response;
+        this.ngMeta.setTitle(this.post.title);
       })
       .catch(error => this.errors.post = error)
       .finally(() => this.loading.post = false);

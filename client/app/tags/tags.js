@@ -5,6 +5,12 @@ angular.module('myblogApp')
     $stateProvider
       .state('tags', {
         url: '/tags/:tag',
-        template: '<tags></tags>'
+        template: '<tags></tags>',
+        data: {
+          meta: {
+            'title': 'Tags',
+            'description': 'Posts by tag'
+          }
+        }
       });
   });

@@ -3,13 +3,14 @@
 (function(){
 
 class TagsComponent {
-  constructor(API, $state) {
+  constructor(API, $state, ngMeta) {
     angular.extend(this, {
       API, $state,
       loading: {},
       errors: {},
       end: false
     });
+    ngMeta.setTitle(`${$state.params.tag ? $state.params.tag.toUpperCase() : 'ALL'} Posts`);
   }
 
   $onInit() {

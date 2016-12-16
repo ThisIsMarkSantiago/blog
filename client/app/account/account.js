@@ -6,7 +6,13 @@ angular.module('myblogApp')
         url: '/login',
         templateUrl: 'app/account/login/login.html',
         controller: 'LoginController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        data: {
+          meta: {
+            'title': 'Login page',
+            'description': 'Login to marksantiago'
+          }
+        }
       })
       .state('logout', {
         url: '/logout?referrer',
@@ -23,7 +29,13 @@ angular.module('myblogApp')
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsController',
         controllerAs: 'vm',
-        authenticate: true
+        authenticate: true,
+        data: {
+          meta: {
+            'title': 'Settings page',
+            'description': 'User settings'
+          }
+        }
       });
   })
   .run(function($rootScope) {
