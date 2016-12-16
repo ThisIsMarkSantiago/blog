@@ -11,10 +11,14 @@ angular.module('myblogApp', [
     'ui.router',
     'ui.bootstrap',
     'validation.match',
-    'infinite-scroll'
+    'infinite-scroll',
+    'ngMeta'
   ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
 
     $locationProvider.html5Mode(true);
+  })
+  .run(function(ngMeta) {
+    ngMeta.init();
   });
