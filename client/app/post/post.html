@@ -17,8 +17,36 @@
     </div>
   </div>
   <hr/>
-  <div class="fb-share-button"
-    data-href="http://marksantiago.herokuapp.com/post/{{$ctrl.$state.params.id}}"
-    data-layout="button">
+  <div id="social">
+    <a href="#"
+      socialshare
+      socialshare-provider="facebook"
+      socialshare-url="http://marksantiago.herokuapp.com/post/{{$ctrl.$state.params.id}}"
+      class="btn btn-xs btn-primary facebook-button">
+        <i class="fa fa-facebook"> </i> Share
+    </a>
+
+    <a href="#"
+      socialshare
+      socialshare-provider="twitter"
+      socialshare-url="http://marksantiago.herokuapp.com/post/{{$ctrl.$state.params.id}}"
+      socialshare-text="{{$ctrl.post.title}}"
+      class="btn btn-xs btn-primary twitter-button"
+      socialshare-popup-height="300"
+      socialshare-popup-width="400">
+        <i class="fa fa-twitter"> </i> tweet
+    </a>
+
+    <a href="#"
+      socialshare
+      socialshare-provider="google"
+      socialshare-url="http://marksantiago.herokuapp.com/post/{{$ctrl.$state.params.id}}"
+      class="btn btn-xs btn-primary google-plus-button"
+      socialshare-popup-height="650"
+      socialshare-popup-width="400">
+        <i class="fa fa-google-plus"> </i> Share
+    </a>
+
   </div>
+  <div class="fb-comments" data-href="https://marksantiago.herokuapp.com/post/{{$ctrl.$state.params.id}}" data-numposts="5"></div>
 </div>

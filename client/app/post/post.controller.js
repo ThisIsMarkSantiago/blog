@@ -3,18 +3,15 @@
 (function(){
 
 class PostComponent {
-  constructor($state, API, ngMeta) {
+  constructor($state, API, ngMeta, $window) {
     angular.extend( this, {
-      $state, API, ngMeta,
+      $state, API, ngMeta, $window,
       loading: {},
       errors: {}
     });
   }
 
   $onInit() {
-    if (FB) {
-      FB.XFBML.parse();
-    }
     if (this.$state.params.id) {
       this.getPost();
     } else {
@@ -29,9 +26,6 @@ class PostComponent {
       .then(response => {
         this.post = response;
         this.ngMeta.setTitle(this.post.title);
-        this.ngMeta.setTag('og:title', this.post.title);
-        this.ngMeta.setTag('og:description', this.post.previewText);
-        this.ngMeta.setTag('og:image', this.post.previewImage);
       })
       .catch(error => this.errors.post = error)
       .finally(() => this.loading.post = false);

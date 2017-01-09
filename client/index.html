@@ -7,16 +7,27 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <base href="/">
-    <title ng-bind="ngMeta.title"></title>
+    <title ng-bind="ngMeta.title">
+      <% if (locals.title) { %>
+        <%= locals.title %>
+      <% } %>
+    </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
     <!-- Meta for facebook -->
-    <meta property="og:url"           content="{{ngMeta['og:url']}}" />
-    <meta property="og:type"          content="website" />
-  	<meta property="og:title"         content="{{ngMeta['og:title']}}" />
-  	<meta property="og:description"   content="{{ngMeta['og:description']}}" />
-  	<meta property="og:image"         content="{{ngMeta['og:image']}}" />
+    <% if (locals.post) { %>
+      <meta property="og:url"           content="https://marksantiago.herokuapp.com/post/<%= locals.post._id %>" />
+      <meta property="og:type"          content="website" />
+      <meta property="og:title"         content="<%= locals.post.title %>" />
+      <meta property="og:description"   content="<%= locals.post.previewText %>" />
+      <meta property="og:image"         content="<%= locals.post.previewImage %>" />
+    <% } else { %>
+      <meta property="og:type"          content="website" />
+    	<meta property="og:title"         content="Mark Santiago Blog" />
+    	<meta property="og:description"   content="See Personal, Travel, Food, Sports and Story blog of Mark." />
+    	<meta property="og:image"         content="https://marksantiago.herokuapp.com/assets/images/profile-picture-3fe682a509.jpg" />
+    <% } %>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
@@ -33,15 +44,13 @@
   <body>
     <!-- Facebook sdk -->
     <div id="fb-root"></div>
-    <script>
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&version=v2.8&appId=593380690857735";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=293662173984315";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
     <!--[if lt IE 7]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -81,6 +90,7 @@
       <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
       <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
       <script src="bower_components/ngMeta/dist/ngMeta.js"></script>
+      <script src="bower_components/angular-socialshare/dist/angular-socialshare.min.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->

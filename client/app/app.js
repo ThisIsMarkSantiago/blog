@@ -12,7 +12,8 @@ angular.module('myblogApp', [
     'ui.bootstrap',
     'validation.match',
     'infinite-scroll',
-    'ngMeta'
+    'ngMeta',
+    '720kb.socialshare'
   ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
@@ -21,4 +22,7 @@ angular.module('myblogApp', [
   })
   .run(function(ngMeta) {
     ngMeta.init();
+  })
+  .config(function(ngMetaProvider) {
+    ngMetaProvider.setDefaultTitle('Mark Santiago Blog');
   });
